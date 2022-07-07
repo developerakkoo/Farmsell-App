@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="dark">Customer Support</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button color="dark" defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12" >
+      <ion-input type="text" placeholder="Enter Mobile No"></ion-input>
+      <ion-button  color="secondary" (click)="scheduleCall()" expand="full" size="large">
+        Request a Call
+      </ion-button>
+    </ion-col>
+    <ion-col size="6"></ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>

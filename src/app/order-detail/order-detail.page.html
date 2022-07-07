@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title color="dark">Order Details</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button  color="secondary"  defaultHref="/history"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <p   style="color: white;">Order ID - {{orderId}}</p>
+</ion-header>
+
+<ion-content >
+
+  <div *ngIf="!isOrderLoaded">
+  
+    <ion-list>
+      <ion-list-header>
+        <ion-label>
+          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
+        </ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+          </p>
+        </ion-label>
+      </ion-item>
+      
+      <div class="ion-padding custom-skeleton">
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+        <ion-skeleton-text animated></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 88%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 70%"></ion-skeleton-text>
+        <ion-skeleton-text animated style="width: 60%"></ion-skeleton-text>
+      </div>
+    </ion-list>
+  </div>
+
+ <div *ngIf="isOrderLoaded">
+  <ion-grid fixed>
+    
+    <ion-row style="margin-top: 10px;">
+      <ion-col>
+        <strong>Sr. no</strong>
+      </ion-col>
+      <ion-col > <strong>Name</strong> </ion-col>
+      <ion-col > <strong>Quantity</strong> </ion-col>
+      <ion-col > <strong>Rate</strong> </ion-col>
+      <ion-col > <strong>Amount</strong> </ion-col>
+    </ion-row>
+
+    <ion-row style="font-size: 15px;"  *ngFor="let item of items; let i = index" >
+      <ion-col> {{i + 1}} </ion-col>
+
+      <ion-col> {{item.title}} </ion-col>
+      <ion-col> {{item.quantity}} {{item.units}} </ion-col>
+      <ion-col> {{item.price | currency:'INR'}} </ion-col>
+      <ion-col> {{item.orderPrice | currency:'INR'}} </ion-col>
+    </ion-row>
+    <hr   style="color: black; background-color: black;">
+    <ion-text color="dark" class="ion-text-right">
+      <h6> <strong>Total:  {{orderAmount | currency:'INR'}} </strong> </h6>
+    </ion-text>
+  </ion-grid>
+ 
+
+  <ion-card class="ion-no-margin" >
+    <ion-card-header>
+      <ion-card-title color="medium">Order Details</ion-card-title>
+      <ion-item lines="none">
+       
+        <ion-text slot="start" class="ion-text-left" color="dark">
+          <p><strong>Address:</strong> {{address}}</p>
+          <p><strong>Contact Number:</strong> {{number}}</p>
+          <p><strong>Payment Mode:</strong> {{ paymentMode }}</p>
+          <p><strong>Delivery Date:</strong> {{ deliveryDate.createdDate | date:'shortDate'}}</p>
+          <p><strong>Time Slot:</strong> {{ deliveryDate.startTime | date:'h:mm a': 'UTC'}} - {{ deliveryDate.endTime | date:'h:mm a': 'UTC'}}</p>
+        </ion-text>
+      </ion-item>
+
+      <hr>
+
+
+
+     
+    </ion-card-header>
+    <ion-card-content>
+  
+    </ion-card-content>
+  </ion-card>
+
+  
+
+  <ion-item (click)="openCustomerSupport()" >
+    <ion-avatar slot="start">
+      <img src="/assets/support.png" />
+    </ion-avatar>
+ 
+    <p style="font-size:12px; font-weight:bold; color:grey;" class="ion-text-center">Need help with your order?</p>
+  </ion-item>
+ 
+ </div>
+
+
+
+ <!-- <div  class="bg" (click)="close()">
+    
+  </div>
+
+
+
+  <div  class="bottomSheet" (touchmove)="touchMove($event)" (touchend)="touchEnd($event)">
+
+    <div class="swipe-handler" (click)="open()">
+
+    </div>
+
+
+    <div class="content ion-padding">
+      <p> </p>
+    
+      
+    </div>
+
+    <div style="width: 100%; height: 60px; position: fixed; bottom: 0; right: 0;">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="12">
+            <ion-item>
+              <ion-icon (click)="callDeliveryPartner()" name="call" slot="end"></ion-icon>
+              <ion-label class="ion-text-wrap ion-text-center">I'm {{user || "Akshay"}}, your delivery partner</ion-label>
+            </ion-item>
+          </ion-col>
+          
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </div>
+ -->
+
+</ion-content>
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button size="large"  color="danger" (click)="onCancelOrder()" expand="full" >
+      Cancel Order in {{timeLeft}} sec.
+    </ion-button>
+  </ion-toolbar>
+</ion-footer> -->

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+ <ion-buttons slot="start">
+   <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+ </ion-buttons>
+  </ion-toolbar>
+
+   
+</ion-header>
+<ion-content> 
+ 
+
+    <div  #map id="map"  style="height: 60%; border-bottom-left-radius: 10%; border-bottom-right-radius: 10%;"></div>
+
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="12">
+          <ion-text color="primary">
+            <h5>Select your location</h5>
+          </ion-text>
+          <ion-item *ngIf="isLocation === true">
+            <ion-label color="medium" position="stacked">Your location</ion-label>
+            <ion-input [(ngModel)]="place"></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label color="medium" position="stacked">Complete Address</ion-label>
+            <ion-input placeholder="House no./Flat no./Floor/Building" [(ngModel)]="completeAddress"></ion-input>
+          </ion-item>
+    
+        </ion-col>
+        <ion-col size="6"></ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+   <ion-button  (click)="onConfimLocation()" expand="block" size="large" >
+    Continue
+   </ion-button>
+  </ion-toolbar>
+</ion-footer>

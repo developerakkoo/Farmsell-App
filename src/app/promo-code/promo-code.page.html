@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Promo Code Available</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/tab2"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-item style="border: 2px dashed grey;" lines="full">
+    <ion-input #input  type="text" placeholder="Enter Promo Code"></ion-input>
+    <ion-button #button (click)="onApplyPromo()" expand="block" fill="clear" shape="round">
+      Apply
+    </ion-button>
+  </ion-item>
+</ion-header>
+
+<ion-content>
+<ion-list>
+  <ion-card class="ion-no-margin">
+    <ion-card-header>
+      <ion-card-subtitle>Get 50% off</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+      <p>Valid on orders with items worth {{150| currency:'INR'}} or more.</p>
+    </ion-card-header>
+    <ion-card-content class="ion-no-margin">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="9">
+            <ion-badge style="padding: 20px; border: 2px dashed grey; width: 150px;" color="light" mode="ios">ALL50</ion-badge>
+            <p>you will save {{56 | currency:'INR'}} on this order.</p>
+           </ion-col>
+          <ion-col size="3"> 
+            <ion-button  (click)="onClick()" expand="block" fill="clear" shape="round">
+              Apply
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card class="ion-no-margin">
+    <ion-card-header>
+      <ion-card-subtitle>Get 10% off</ion-card-subtitle>
+      <ion-card-title></ion-card-title>
+      <p>Valid on orders with items worth {{100| currency:'INR'}} or more.</p>
+    </ion-card-header>
+    <ion-card-content class="ion-no-margin">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="9">
+            <ion-badge style="padding: 20px; border: 2px dashed grey; width: 150px;" color="light" mode="ios">ALL50</ion-badge>
+            <p>you will save {{15 | currency:'INR'}} on this order.</p>
+           </ion-col>
+          <ion-col size="3"> 
+            <ion-button  (click)="onClick()" expand="block" fill="clear" shape="round">
+              Apply
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-list>
+</ion-content>

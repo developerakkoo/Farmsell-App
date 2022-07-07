@@ -1,0 +1,54 @@
+
+
+<ion-content>
+<ion-grid *ngIf="isOtpAuth"  class="ion-margin-top" class="ion-margin-top" >
+  <ion-row class="auth-margin-top" >
+    <ion-col size="12">
+      <ion-text class="ion-text-center" color="primary">
+        <h1 style="font-size: 70px; font-weight: bold; margin-top: 80px;">Farmsell</h1>
+   
+      </ion-text>
+      <ion-col  size="12">
+        <img src="assets/undraw_on_the_way_re_swjt.svg" alt="" srcset="">
+      </ion-col>
+    
+
+    </ion-col>
+    <ion-col  size="10" offset="1">
+      <ion-item >
+        <ion-input type="number"  [(ngModel)]="mobileNumber" placeholder="Enter your number" required></ion-input>
+      </ion-item>
+    </ion-col>
+    <ion-col size="12" offset="">
+      
+      <ion-text  class="ion-text-center" color="primary">
+        <p >By login, you agree to our terms and conditions</p>
+      </ion-text>
+    </ion-col>
+   
+  </ion-row>
+</ion-grid>
+
+
+<ion-grid *ngIf="!isOtpAuth"  class="ion-margin-top" class="ion-margin-top" fixed>
+ 
+  <ion-text color="primary">
+    <h1>No Network</h1>
+  </ion-text>
+</ion-grid>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+ <ion-toolbar >
+  <ion-button *ngIf="isOtpAuth" (click)="presentAlertConfirm()" expand="full" size="large" >
+    Get Otp
+   </ion-button>
+
+   <!-- <ion-button  *ngIf="!isOtpAuth" (click)="login()" expand="full" size="large" >
+    Login
+   </ion-button> -->
+   
+ </ion-toolbar>
+  
+
+</ion-footer>

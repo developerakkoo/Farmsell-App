@@ -1,0 +1,170 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="font-weight: bold;" class="ion-text-center" color="dark">
+      Cart
+    </ion-title>
+  </ion-toolbar>
+  <ion-item (click)="openLocation()">
+   <ion-label class="ion-text-nowrap"> <ion-icon slot="start" name="home"></ion-icon> {{address.useradd}}</ion-label>
+   <!-- <ion-icon (click)="selectAddress()" slot="end" name="add"></ion-icon> -->
+  </ion-item>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-no-margin">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-grid fixed>
+    <ion-row *ngIf="cart.length == 0">
+      <ion-col size="6" offset="3">
+        <ion-text class="ion-text-center" color="dark">
+          <h2>It Looks like your cart is empty</h2>
+        </ion-text>
+        <ion-img src="assets/empty-cart.png"></ion-img>
+      </ion-col>
+      <ion-col size="6" offset="3">
+        <ion-text class="ion-text-center">
+          <p class="light-text">Fill your cart with fresh vegetables and fruits.</p>
+        </ion-text>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="cart.length > 0">
+      <ion-col size="12">
+
+
+        <ion-card class="ion-no-margin">
+
+          <ion-card-content class="ion-no-margin" class="ion-no-padding">
+            <ion-list>
+
+              <ion-item >
+
+                <ion-grid class="ion-no-margin" class="ion-no-padding">
+                  <ion-row style="margin-top: 10px; margin-left: 10px;" >
+                 
+                    <ion-col> <strong style="font-size: 11px;">Name</strong> </ion-col>
+                    <ion-col> <strong style="font-size: 11px;">Quantity</strong> </ion-col>
+                    <ion-col> <strong style="font-size: 11px;">Rate</strong> </ion-col>
+                    <ion-col > <strong style="font-size: 11px;">Amt</strong> </ion-col>
+                  </ion-row>
+
+
+                  <ion-row  style="font-size: 12px; margin-top: 20px; margin-left: 0px;"  *ngFor="let item of cart; let i = index" >
+              
+                    <ion-col > 
+                      <ion-item lines="none">
+                        <p style="font-size: 10px;">{{item.title}} {{item.quantity}} {{item.productId.units}}</p>
+                      </ion-item> </ion-col>
+
+                    <ion-col > 
+                      <ion-item lines="none">
+                        <ion-icon style="zoom: 1.0; margin-right: 3px;" name="remove-circle" color="danger"
+                        (click)="removeFromCart(item.productId)"></ion-icon> <p style="font-size: 10px;">{{item.quantity}}</p> <ion-icon style="zoom: 1.0; margin-left: 3px;"  name="add-circle" color="dark"
+                        (click)="addToCart(item.productId)"></ion-icon>
+                      </ion-item> </ion-col>
+
+                    <ion-col > 
+                      <ion-item lines="none">
+                        <p style="font-size: 10px;">{{item.price | currency:'INR':true:'1.0-0'}}</p>
+                      </ion-item> </ion-col>
+                    <ion-col > 
+                      <ion-item lines="none">
+                        <p style="font-size: 10px;">{{item.orderPrice | currency:'INR':true:'1.0-0'}} </p>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <hr   style="color: black; background-color: black;">
+                  <ion-text color="dark" class="ion-text-right">
+                    <h6> <strong>Total:  {{sumOfCart || 0 |
+                      currency:'INR'}} </strong> </h6>
+                  </ion-text>
+                  <!-- <ion-row>
+                    <ion-col size="2">
+                      <h6 style="margin-top: 10px;" > {{item.title}}  {{item.productId.units}} </h6>
+                    </ion-col>
+                    <ion-col size="7">
+                      <ion-icon style="border: 1px solid black;" slot="start" name="close-outline"></ion-icon>
+                      <ion-item lines="none">
+                        <ion-icon class="ion-margin-end" size="large" name="remove-outline" color="danger"
+                          (click)="removeFromCart(item.productId)"></ion-icon>
+                        <p>{{item.quantity}}</p>
+                        <ion-icon class="ion-margin-start" size="large" name="add-outline" color="dark"
+                          (click)="addToCart(item.productId)"></ion-icon>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col size="3" >
+                      <h6 style="margin-top: 10px;">{{item.orderPrice | currency:"INR"}}</h6>
+                    </ion-col>
+                  </ion-row> -->
+                </ion-grid>
+
+
+              </ion-item>
+            </ion-list>
+            <!-- <ion-item lines="none">
+              <ion-label class="ion-text-left">Total Amount </ion-label> <strong>{{sumOfCart || 0 |
+                currency:'INR'}}</strong>
+            </ion-item> -->
+          </ion-card-content>
+        </ion-card>
+
+
+
+      </ion-col>
+
+      <ion-col size="12">
+     
+
+        <ion-item lines="none">
+          <ion-select (ionChange)="slotSelectedEvent($event)" [interfaceOptions]="customAlertOptions" style="margin: auto; border: 1px solid grey; padding: 10px; width: 190px; " color="dark"
+            placeholder="Select Delivery Slot" placeholder="Select Delivery Slot" [value]="slots[0]">
+             <ion-select-option  [value]="slot" *ngFor="let slot of slots" > {{slot.todaysDate | date:'dd LLL'}} {{slot.startTime | date:'hh:m'
+            }} - {{slot.endTime | date:'h:mm' }}</ion-select-option>  
+            <!-- <ion-select-option style="font-size: 10px;" *ngFor="let slot of slots" value="peperoni"> 
+              <p>{{slot.startTime | date:'shortTime': 'UTC'
+              }} - {{slot.endTime | date:'shortTime': 'UTC' }}</p>
+             </ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        <ion-list style="margin-top: 20px;">
+          <ion-radio-group value="online" (ionChange)="PaymentOptionChange($event)" class="ion-no-padding">
+
+
+            <ion-item lines="none">
+              <ion-radio value="cash" selected="true"></ion-radio>
+              <p style="color: #7f8483; font-weight: 400; font-size:14px; line-height: 16.8px;"
+                class="ion-padding-start">Pay On Delivery</p>
+            </ion-item>
+
+            <ion-item lines="none">
+              <ion-radio value="online"></ion-radio>
+              <p style="color: #7f8483; font-weight: 400; font-size:14px; line-height: 16.8px;"
+                class="ion-padding-start">Pay Online</p>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+
+</ion-content>
+
+
+
+<ion-footer class="ion-no-margin" class="ion-no-padding">
+
+  <ion-button *ngIf="!isCashOnDelivery" [disabled]="cart.length <= 0" color="dark" (click)="onPlaceOrder()"
+  expand="full" size="large">
+  <p>Pay Online</p>
+</ion-button>
+<ion-button *ngIf="isCashOnDelivery" [disabled]="cart.length <= 0" color="dark"
+  (click)="showOrderPlacedPage()" expand="full" size="large">
+  <p>Pay On Delivery</p>
+</ion-button>
+
+</ion-footer>

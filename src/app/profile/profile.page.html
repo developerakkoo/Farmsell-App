@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>My Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-grid fixed>
+  <ion-row>
+    <ion-col size="12">
+      <ion-list class="ion-no-margin">
+        <ion-item  detail [routerLink]="['/history']"  >
+          <ion-icon name="bag-outline" slot="start"></ion-icon>
+          <ion-label>My Orders</ion-label>
+        </ion-item>
+        <ion-item detail routerLink="/tabs/account">
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-label>My Profile</ion-label>
+        </ion-item>
+<!-- 
+        <ion-item detail>
+          <ion-icon name="home-outline" slot="start"></ion-icon>
+          <ion-label>Delivery Address</ion-label>
+        </ion-item>
+
+        <ion-item detail>
+          <ion-icon name="gift-outline" slot="start"></ion-icon>
+          <ion-label>Promo Card</ion-label>
+        </ion-item> -->
+
+        <ion-item routerLink="/help" detail>
+          <ion-icon name="call-outline" slot="start"></ion-icon>
+          <ion-label>Customer Support</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+    <ion-col size="6"></ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+

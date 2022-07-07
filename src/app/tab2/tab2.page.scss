@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+
+body{
+    font-family: 'Lato', sans-serif;
+    margin: 0px;
+}
+
+
+/* Works - pass "my-custom-class" in cssClass to increase specificity */
+.my-custom-class .modal-wrapper {
+    background: rgb(250, 15, 15); 
+  }
+
+.light-text{
+    color: lightgrey;
+}
+
+ion-button{
+  height: 60px;
+  width: 100%;
+  margin: 0px;
+}

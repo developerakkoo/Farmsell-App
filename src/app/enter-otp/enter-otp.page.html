@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar >
+    <ion-title color="primary">OTP</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid  class="ion-margin-top" class="ion-margin-top" fixed>
+    <ion-row class="auth-margin-top" >
+      <ion-col size="8" offset="2">
+        <ion-text class="ion-text-center" color="primary">
+          <h1 style="font-weight: bold;">Verification code</h1>
+     
+        </ion-text>
+        <ion-text class="ion-text-center" style="color: rgb(160, 158, 158);">
+       
+          <p>We have sent the code verification to your Mobile number.</p>
+        </ion-text>
+  
+      </ion-col>
+      <ion-col size="6" offset="3" >
+              
+        <ng-otp-input  (onInputChange)="getOTP($event)"   [config]="{length:4}"></ng-otp-input>
+
+        <!-- <ion-text class="ion-text-right" color="dark">
+          <p style="font-size: 14px;">Resend?</p>
+        </ion-text> -->
+      </ion-col>
+      <ion-col size="8" offset="2">
+        <ion-img src="assets/otp.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  </ion-content>
+  
+  <ion-footer class="ion-no-border">
+   
+   <ion-toolbar>
+    <ion-button [disabled]="!isOtpValid" (click)="verifyOtp()" expand="full" size="large" >
+      Login
+     </ion-button>
+   </ion-toolbar>
+  
+  </ion-footer>

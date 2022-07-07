@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@900&display=swap');
+
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+.auth-margin-top{
+    margin-top:10%;
+}
+
+ion-button{
+    height: 60px;
+    width: 100%;
+    margin: 0px;
+}
+
+ion-img{
+    height: 100px !important;
+}
+
+ion-input{
+    text-align: center;
+    --placeholder-align: center;
+    --placeholder-margin: 0px;
+    
+}
+
+.my-custom-class {
+    --background: #660000;
+  }

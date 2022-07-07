@@ -1,0 +1,78 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      My Profile
+    </ion-title>
+    <ion-button (click)="refresh()" slot="end" fill="clear">
+      <ion-icon   color="light" slot="icon-only" name="refresh"></ion-icon>
+    </ion-button>
+  <ion-button slot="end" fill="clear" (click)="openSettings()">
+    <ion-icon color="light" slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+  </ion-button>
+  <ion-buttons slot="start">
+    <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+  </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="9" offset="4">
+        <ion-avatar style="width: 100px; height: 100px;">
+          <img src="assets/profile.png" />
+        </ion-avatar>
+ 
+   
+      </ion-col>
+
+      <ion-col size="6">
+        <ion-item>
+          <ion-label position="stacked">First Name</ion-label>
+          <ion-input type="text" placeholder="First Name" [(ngModel)]="fName"></ion-input>
+
+        </ion-item>
+    
+      </ion-col>
+
+      <ion-col size="6">
+
+        <ion-item>
+          <ion-label position="stacked">Last Name</ion-label>
+          <ion-input type="text" placeholder="Last  Name" [(ngModel)]="lName"></ion-input>
+
+        </ion-item>
+
+    
+       
+      </ion-col>
+
+      <ion-col size="12">
+        
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input type="email" placeholder="Email" [(ngModel)]="email" ></ion-input>
+
+        </ion-item>
+
+
+        <ion-item>
+          <ion-label position="stacked">Contact Number</ion-label>
+          <ion-input type="text" placeholder="Mobile Number" [(ngModel)]="contactNumber"></ion-input>
+
+
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">House Address</ion-label>
+          <ion-input type="text" placeholder="Default House Address" [(ngModel)]="houseAddress"></ion-input>
+
+
+        </ion-item>
+
+        
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,22 @@
+
+ion-tab-bar {
+  --color-selected: var(--ion-color-dark);
+  --color: var(--ion-color-dark);
+
+    bottom: 0px;
+    position: relative;
+    
+    border: none;
+    width: 100%;
+        margin: 0 auto;
+  
+  }
+  
+  ion-tab-button {
+    --color: var(--ion-color-dark);
+    --color-selected: var(--ion-color-dark) !important;
+  
+ 
+  }
+
+  
